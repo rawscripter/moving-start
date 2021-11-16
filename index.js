@@ -21,18 +21,18 @@ var circle = {
         ctx.fill();
     },
     move: function () {
-        this.y += Math.random() * 1;
-        this.x += Math.random() * 2;
+        this.y += Math.random() * .5;
+        this.x += Math.random() * .5;
     },
 
     reset: function () {
-        this.x = canvas.width / 2;
-        this.y = canvas.height / 2;
+        this.x = canvas.width / .5;
+        this.y = canvas.height / .5;
         this.radius = 10;
     },
 
     changeColor: function () {
-        this.color = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")";
+        this.color = "rgba(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.random() * 1 + ")";
     }
     ,
 
@@ -61,17 +61,17 @@ function animate() {
 
 }
 
-// on click draw a circle
-canvas.addEventListener("click", function (e) {
 
+// on load of window draw a circle
+window.addEventListener("load", function () {
     setInterval(() => {
-        for (let i = 0; i < Math.random() * 20; i++) {
+        for (let i = 0; i < Math.random() * 10; i++) {
             let newCircle = Object.create(circle);
             let randomX = Math.random() * canvas.width;
             let randomY = Math.random() * canvas.height;
             newCircle.x = randomX;
             newCircle.y = randomY;
-            newCircle.radius = Math.random() * 10;
+            newCircle.radius = Math.random() * 5;
             particles.push(newCircle);
         }
     }, 500);
